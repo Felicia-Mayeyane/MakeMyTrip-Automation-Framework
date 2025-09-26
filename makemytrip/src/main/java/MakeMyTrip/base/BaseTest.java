@@ -15,7 +15,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.get(config.getProperty("url"));
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(config.getProperty("pageLoadTimeOut"))));
+        WebDriver.Timeouts pageLoadTimeOut = driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(config.getProperty("pageLoadTimeOut"))));driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Integer.parseInt(config.getProperty("pageLoadTimeOut"))));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().deleteAllCookies();
     }

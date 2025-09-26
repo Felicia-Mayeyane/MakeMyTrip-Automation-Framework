@@ -1,5 +1,6 @@
 package MakeMyTrip.pages;
 import MakeMyTrip.base.BaseTest;
+import Utils.TestUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -33,42 +34,55 @@ public class HomePage extends BaseTest {
     WebElement ReturnDateDropdown;
 
     String DepartureDate = "//*[@id=\"top-banner\"]/div[2]/div/div/div/div/div/div[2]/div[1]/div[3]/div[1]/div/div/div/div[2]/div/div[2]/div[1]/div[3]/div[2]/div[5]";
-        String ReturnDate = "//*[@id=\"top-banner\"]/div[2]/div/div/div/div/div/div[2]/div[1]/div[3]/div[1]/div/div/div/div[2]/div/div[2]/div[2]/div[3]/div[1]/div[5]";
+    String ReturnDate = "//*[@id=\"top-banner\"]/div[2]/div/div/div/div/div/div[2]/div[1]/div[3]/div[1]/div/div/div/div[2]/div/div[2]/div[2]/div[3]/div[1]/div[5]";
 
-        @FindBy(xpath= "//*[@id=\"top-banner\"]/div[2]/div/div/div/div/div/div[2]/p/a")
-        WebElement SearchButton;
+    @FindBy(xpath= "//*[@id=\"top-banner\"]/div[2]/div/div/div/div/div/div[2]/p/a")
+    WebElement SearchButton;
 
-        public HomePage(){
-            super();
-            PageFactory.initElements(driver, this);
-        }
+    public HomePage(){
+        super();
+        PageFactory.initElements(driver, this);
+    }
 
-        public void SelectFlightMenu(){
-            FlightMenu.click();
-        }
-        public void SelectRoundTrip(){
-            RoundTrip.click();
-        }
+    public void SelectFlightMenu(){
+        FlightMenu.click();
+    }
+    public void SelectRoundTrip(){
+        RoundTrip.click();
+    }
 
-        public void enterDepartureCity(){
-            FromCityDropdown.click();
-            SearchFrom.sendKeys(config.getProperty("From"));
-            SearchFrom.sendKeys(Keys.TAB);
-        }
+    public void enterDepartureCity(){
+        FromCityDropdown.click();
+        SearchFrom.sendKeys(config.getProperty("From"));
+        SearchFrom.sendKeys(Keys.TAB);
+    }
 
-        public void enterReturnCity(){
-            ToCityDropdown.click();
-            SearchTo.sendKeys(config.getProperty("To"));
-            SearchTo.sendKeys(Keys. TAB);
+    public void enterReturnCity() {
+        ToCityDropdown.click();
+        SearchTo.sendKeys(config.getProperty("To"));
+        SearchTo.sendKeys(Keys.TAB);
+    }
 
-            public void selectDepartureDate;(){
-                DepartureDateDropdown.click();
+    public void enterDepartureDate(){
+        DepartureDateDropdown.click();
+        TestUtils date = TestUtils.getCurrentDateandReturnDate();
+        driver.findElement(TestUtils.customXpath(DepartureDate, date.DepartureDate)).click();
+    }
 
-            }
-        }
+    public void enterReturnDate(){
+        ReturnDateDropdown.click();
+        TestUtils date = TestUtils.getCurrentDateandReturnDate();
+        driver.findElement(TestUtils.customXpath(ReturnDate, date.ReturnDate)).click();
+    }
 
-
-
+    public void SearchBtn(){
+        SearchButton.click();
+    }
 }
+
+
+
+
+
 
 

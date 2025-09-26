@@ -1,6 +1,7 @@
 package Utils;
 
 import MakeMyTrip.base.BaseTest;
+import org.openqa.selenium.By;
 
 import java.util.Calendar;
 
@@ -19,5 +20,9 @@ public class TestUtils extends BaseTest {
         DateArr = cal.getTime().toString().split(" ");
         TestUtils.ReturnDate = DateArr[0] + " " + DateArr[1] + " " + DateArr[2] + " " + DateArr[5];
         return date;
+    }
+    public static By customXpath(String xpath, String parm){
+        String rawPath = xpath.replaceAll(" %replace%",parm);
+        return By.xpath(rawPath);
     }
 }
