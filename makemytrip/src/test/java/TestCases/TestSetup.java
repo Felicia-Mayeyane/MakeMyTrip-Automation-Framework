@@ -10,9 +10,11 @@ public class TestSetup extends BaseTest {
     public void setUp() throws IOException {
         readPropertyFile();
        driverInitialization();
+       setExtentReport();
     }
     @AfterSuite
     public void tearDown(){
+        extent.flush();
         driver.quit();
     }
 }
